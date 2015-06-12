@@ -170,7 +170,7 @@ class Category extends CategoriesAppModel {
 		}
 
 		//登録処理
-				$indexes = array_keys($data['Categories']);
+		$indexes = array_keys($data['Categories']);
 		foreach ($indexes as $i) {
 			$category = $data['Categories'][$i];
 			$category['Category']['block_id'] = (int)$data['Block']['id'];
