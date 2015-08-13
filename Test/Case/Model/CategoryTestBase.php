@@ -31,11 +31,8 @@ class CategoryTestBase extends YACakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'plugin.blocks.block',
 		'plugin.categories.category',
 		'plugin.categories.category_order',
-		'plugin.users.user_attributes_user',
-		'plugin.users.user',
 	);
 
 /**
