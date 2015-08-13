@@ -86,21 +86,8 @@ class CategoriesComponentTestBase extends YACakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		//'plugin.blocks.block',
-		//'plugin.boxes.box',
 		'plugin.categories.category',
 		'plugin.categories.category_order',
-		//'plugin.frames.frame',
-		//'plugin.m17n.language',
-		//'plugin.pages.languages_page',
-		//'plugin.pages.page',
-		//'plugin.roles.default_role_permission',
-		//'plugin.rooms.room',
-		//'plugin.rooms.roles_rooms_user',
-		//'plugin.rooms.roles_room',
-		//'plugin.rooms.room_role_permission',
-		//'plugin.users.user_attributes_user',
-		//'plugin.users.user',
 	);
 
 /**
