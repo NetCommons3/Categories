@@ -19,138 +19,134 @@ App::uses('ModelBehavior', 'Model');
  */
 class CategoryBehavior extends ModelBehavior {
 
-//
-///**
-// * beforeValidate is called before a model is validated, you can use this callback to
-// * add behavior validation rules into a models validate array. Returning false
-// * will allow you to make the validation fail.
-// *
-// * @param Model $model Model using this behavior
-// * @param array $options Options passed from Model::save().
-// * @return mixed False or null will abort the operation. Any other result will continue.
-// * @see Model::save()
-// */
-//	public function beforeValidate(Model $model, $options = array()) {
-//		if (! isset($model->data['Comment'])) {
-//			return true;
-//		}
-//
-//		$model->loadModels(array(
-//			'Comment' => 'Comments.Comment',
-//		));
-//
-//		//コメントの登録(ステータス 差し戻しのみコメント必須)
-//		if (! isset($model->data[$model->alias]['status'])) {
-//			$model->data[$model->alias]['status'] = null;
-//		}
-//		if ($model->data[$model->alias]['status'] === NetCommonsBlockComponent::STATUS_DISAPPROVED ||
-//				$model->data['Comment']['comment'] !== '') {
-//
-//			$model->Comment->set($model->data['Comment']);
-//			$model->Comment->validates();
-//
-//			if ($model->Comment->validationErrors) {
-//				$model->validationErrors = Hash::merge($model->validationErrors, $model->Comment->validationErrors);
-//				return false;
-//			}
-//		}
-//
-//		return true;
-//	}
-//
-///**
-// * afterSave is called after a model is saved.
-// *
-// * @param Model $model Model using this behavior
-// * @param bool $created True if this save created a new record
-// * @param array $options Options passed from Model::save().
-// * @return bool
-// * @throws InternalErrorException
-// * @see Model::save()
-// */
-//	public function afterSave(Model $model, $created, $options = array()) {
-//		if (! isset($model->data['Comment']) || ! $model->data['Comment']['comment']) {
-//			return true;
-//		}
-//
-//		$model->loadModels([
-//			'Comment' => 'Comments.Comment',
-//		]);
-//
-//		$model->data['Comment']['plugin_key'] = Inflector::underscore($model->plugin);
-//		$model->data['Comment']['content_key'] = $model->data[$model->alias]['key'];
-//
-//		if (! $model->Comment->save($model->data['Comment'], false)) {
-//			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-//		}
-//
-//		return parent::afterSave($model, $created, $options);
-//	}
-//
-///**
-// * Get Comments data
-// *
-// * @param Model $model Model using this behavior
-// * @param string $contentKey Content key
-// * @return array
-// */
-//	public function getCommentsByContentKey(Model $model, $contentKey) {
-//		$model->Comment = ClassRegistry::init('Comments.Comment');
-//
-//		if (! $contentKey) {
-//			return array();
-//		}
-//
-//		$conditions = array(
-//			'content_key' => $contentKey,
-//			'plugin_key' => Inflector::underscore($model->plugin),
-//		);
-//		$comments = $model->Comment->find('all', array(
-//			'conditions' => $conditions,
-//			'order' => 'Comment.id DESC',
-//		));
-//
-//		return $comments;
-//	}
-//
-///**
-// * Delete comments by content key
-// *
-// * @param Model $model Model using this behavior
-// * @param string $contentKey content key
-// * @return bool True on success
-// * @throws InternalErrorException
-// */
-//	public function deleteCommentsByContentKey(Model $model, $contentKey) {
-//		$model->loadModels(array(
-//			'Comment' => 'Comments.Comment',
-//		));
-//
-//		if (! $model->Comment->deleteAll(array($model->Comment->alias . '.content_key' => $contentKey), false)) {
-//			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-//		}
-//
-//		return true;
-//	}
-//
-///**
-// * Delete comments by blocks.key
-// *
-// * @param Model $model Model using this behavior
-// * @param string $blockKey blocks.key
-// * @return bool True on success
-// * @throws InternalErrorException
-// */
-//	public function deleteCommentsByBlockKey(Model $model, $blockKey) {
-//		$model->loadModels(array(
-//			'Comment' => 'Comments.Comment',
-//		));
-//
-//		if (! $model->Comment->deleteAll(array($model->Comment->alias . '.block_key' => $blockKey), false)) {
-//			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-//		}
-//
-//		return true;
-//	}
+/**
+ * beforeValidate is called before a model is validated, you can use this callback to
+ * add behavior validation rules into a models validate array. Returning false
+ * will allow you to make the validation fail.
+ *
+ * @param Model $model Model using this behavior
+ * @param array $options Options passed from Model::save().
+ * @return mixed False or null will abort the operation. Any other result will continue.
+ * @see Model::save()
+ */
+	public function beforeValidate(Model $model, $options = array()) {
+		if (! isset($model->data['Categories'])) {
+			return true;
+		}
+		$model->loadModels(array(
+			'Category' => 'Categories.Category',
+			'CategoryOrder' => 'Categories.CategoryOrder',
+		));
+
+		foreach ($model->data['Categories'] as $category) {
+			$model->Category->set($category['Category']);
+			$model->Category->validates();
+			if ($model->Category->validationErrors) {
+				$model->validationErrors = Hash::merge($model->validationErrors, $model->Category->validationErrors);
+				return false;
+			}
+
+			$model->CategoryOrder->set($category['CategoryOrder']);
+			$model->CategoryOrder->validates();
+			if ($model->CategoryOrder->validationErrors) {
+				$model->validationErrors = Hash::merge($model->validationErrors, $model->CategoryOrder->validationErrors);
+				return false;
+			}
+		}
+		return true;
+	}
+
+/**
+ * afterSave is called after a model is saved.
+ *
+ * @param Model $model Model using this behavior
+ * @param bool $created True if this save created a new record
+ * @param array $options Options passed from Model::save().
+ * @return bool
+ * @throws InternalErrorException
+ * @see Model::save()
+ */
+	public function afterSave(Model $model, $created, $options = array()) {
+		if (! isset($model->data['Categories'])) {
+			return true;
+		}
+		$model->loadModels(array(
+			'Category' => 'Categories.Category',
+			'CategoryOrder' => 'Categories.CategoryOrder',
+		));
+
+		$categoryKeys = Hash::combine($model->data['Categories'], '{n}.Category.key', '{n}.Category.key');
+
+		//削除処理
+		$conditions = array(
+			'block_id' => $model->data['Block']['id']
+		);
+		if ($categoryKeys) {
+			$conditions[$model->Category->alias . '.key NOT'] = $categoryKeys;
+		}
+		if (! $model->Category->deleteAll($conditions, false)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		$conditions = array(
+			'block_key' => $model->data['Block']['key']
+		);
+		if ($categoryKeys) {
+			$conditions[$model->CategoryOrder->alias . '.category_key NOT'] = $categoryKeys;
+		}
+		if (! $model->CategoryOrder->deleteAll($conditions, false)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		//登録処理
+		foreach ($model->data['Categories'] as $category) {
+			if (! $result = $model->Category->save($category['Category'], false)) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
+			$category['CategoryOrder']['category_key'] = $result['Category']['key'];
+			if (! $model->CategoryOrder->save($category['CategoryOrder'], false)) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+		}
+
+		return parent::afterSave($model, $created, $options);
+	}
+
+/**
+ * Delete categories by blocks.key
+ *
+ * @param Model $model Model using this behavior
+ * @param string $blockKey blocks.key
+ * @return bool True on success
+ * @throws InternalErrorException
+ */
+	public function deleteCategoriesByBlockKey(Model $model, $blockKey) {
+		$model->loadModels([
+			'Category' => 'Categories.Category',
+			'CategoryOrder' => 'Categories.CategoryOrder',
+			'Block' => 'Blocks.Block',
+		]);
+
+		$blocks = $model->Block->find('list', array(
+			'recursive' => -1,
+			'conditions' => array(
+				$model->Block->alias . '.key' => $blockKey
+			),
+		));
+		$blocks = array_keys($blocks);
+
+		//Categoryデータ削除
+		if (! $model->Category->deleteAll(array($model->Category->alias . '.block_id' => $blocks), false)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		//CategoryOrderデータ削除
+		if (! $model->CategoryOrder->deleteAll(array($model->CategoryOrder->alias . '.block_key' => $blockKey), false)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		return true;
+	}
 
 }

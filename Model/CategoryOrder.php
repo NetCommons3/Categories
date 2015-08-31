@@ -75,11 +75,11 @@ class CategoryOrder extends CategoriesAppModel {
  * @return bool True on success, false on validation errors
  */
 	public function validateCategoryOrder($data) {
-		$this->set($data);
-		$this->validates();
-		if ($this->validationErrors) {
-			return false;
-		}
+//		$this->set($data);
+//		$this->validates();
+//		if ($this->validationErrors) {
+//			return false;
+//		}
 		return true;
 	}
 }

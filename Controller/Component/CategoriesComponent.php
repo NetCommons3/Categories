@@ -72,22 +72,4 @@ class CategoriesComponent extends Component {
 //		$categories = $this->controller->camelizeKeyRecursive($categories);
 //		$this->controller->set(['categories' => $categories]);
 	}
-
-/**
- * Called after the Controller::beforeFilter() and before the controller action
- *
- * @param Controller $controller Controller with components to startup
- * @return void
- * @throws ForbiddenException
- */
-	public function startup(Controller $controller) {
-		$controller->Category = ClassRegistry::init('Categories.Category');
-
-		if ($controller->request->is(array('post', 'put'))) {
-
-		} else {
-			$controller->request->data['Categories'] = $controller->Category->getCategories($this->viewVars['blockId'], $this->viewVars['roomId']);
-
-		}
-	}
 }

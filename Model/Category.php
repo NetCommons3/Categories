@@ -117,8 +117,6 @@ class Category extends CategoriesAppModel {
  * @return array Categories
  */
 	public function getCategories($blockId, $roomId) {
-//		$this->CategoryOrder = ClassRegistry::init('Categories.CategoryOrder');
-
 		$conditions = array(
 			'Block.id' => $blockId,
 			'Block.room_id' => $roomId,
@@ -131,36 +129,6 @@ class Category extends CategoriesAppModel {
 			),
 			'conditions' => $conditions,
 		));
-
-//		$categories = $this->find('all', array(
-//			'recursive' => -1,
-//			'fields' => array(
-//				$this->alias . '.*',
-//				$this->CategoryOrder->alias . '.*',
-//			),
-//			'joins' => array(
-//				array(
-//					'table' => $this->Block->table,
-//					'alias' => $this->Block->alias,
-//					'type' => 'INNER',
-//					'conditions' => array(
-//						$this->alias . '.block_id' . ' = ' . $this->Block->alias . ' .id',
-//					),
-//				),
-//				array(
-//					'table' => $this->CategoryOrder->table,
-//					'alias' => $this->CategoryOrder->alias,
-//					'type' => 'INNER',
-//					'conditions' => array(
-//						$this->alias . '.key' . ' = ' . $this->CategoryOrder->alias . ' .category_key',
-//					),
-//				),
-//			),
-//			'conditions' => $conditions,
-//			'order' => array(
-//				$this->CategoryOrder->alias . '.weight' => 'asc'
-//			),
-//		));
 
 		return $categories;
 	}
@@ -195,7 +163,7 @@ class Category extends CategoriesAppModel {
 //			$conditionsCategory[$this->alias . '.key NOT'] = $categoryKeys;
 //			$conditionsCateOrder[$this->CategoryOrder->alias . '.category_key NOT'] = $categoryKeys;
 //		}
-//
+
 //		if (! $this->deleteAll($conditionsCategory, false)) {
 //			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 //		}
@@ -242,7 +210,7 @@ class Category extends CategoriesAppModel {
 //				return false;
 //			}
 //		}
-//		return true;
+		return true;
 	}
 
 /**

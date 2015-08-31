@@ -20,15 +20,14 @@ if (! isset($this->request->data['Categories'])) {
 if (! isset($this->request->data['CategoryMap'])) {
 	$this->request->data['CategoryMap'] = array();
 }
-
 ?>
 
 <?php
 	foreach ($this->request->data['CategoryMap'] as $category) {
-		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
-		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
-		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
-		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
+		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
+		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
+		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
+		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
 	}
 	$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
 ?>

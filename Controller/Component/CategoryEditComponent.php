@@ -10,6 +10,7 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
+
 App::uses('Component', 'Controller');
 
 /**
@@ -44,9 +45,13 @@ class CategoryEditComponent extends Component {
 				$category = null;
 				if (! $post['Category']['id']) {
 					$category = $controller->Category->create(array(
+						'id' => null,
+						'key' => null,
 						'name' => $post['Category']['name'],
  					));
 					$category = Hash::merge($category, $controller->CategoryOrder->create(array(
+						'id' => null,
+						'category_key' => null,
 						'weight' => $post['CategoryOrder']['weight'],
  					)));
 				}
