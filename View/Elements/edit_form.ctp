@@ -11,9 +11,27 @@
  * @license http://www.netcommons.org/license.txt NetCommons License
  * @copyright Copyright 2014, NetCommons Project
  */
+
+echo $this->NetCommonsHtml->script('/categories/js/categories.js');
+
+if (! isset($this->request->data['Categories'])) {
+	$this->request->data['Categories'] = array();
+}
+if (! isset($this->request->data['CategoryMap'])) {
+	$this->request->data['CategoryMap'] = array();
+}
+
 ?>
 
-<?php echo $this->Html->script('/categories/js/categories.js', false); ?>
+<?php
+	foreach ($this->request->data['CategoryMap'] as $category) {
+		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
+		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
+		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
+		$this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
+	}
+	$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
+?>
 
 <?php $this->Form->unlockField('Categories'); ?>
 
