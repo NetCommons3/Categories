@@ -48,12 +48,12 @@ class CategoryEditComponent extends Component {
 						'id' => null,
 						'key' => null,
 						'name' => $post['Category']['name'],
- 					));
+					));
 					$category = Hash::merge($category, $controller->CategoryOrder->create(array(
 						'id' => null,
 						'category_key' => null,
 						'weight' => $post['CategoryOrder']['weight'],
- 					)));
+					)));
 				}
 				if (isset($controller->request->data['CategoryMap'][$post['Category']['id']])) {
 					$category = Hash::merge($post, $controller->request->data['CategoryMap'][$post['Category']['id']]);
