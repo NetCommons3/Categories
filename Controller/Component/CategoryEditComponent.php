@@ -64,12 +64,26 @@ class CategoryEditComponent extends Component {
 				$categories[] = $category;
 			}
 			$controller->request->data['Categories'] = $categories;
+		}
 
-		} else {
+		$this->controler = $controller;
+	}
+
+/**
+ * Called before the Controller::beforeRender(), and before
+ * the view class is loaded, and before Controller::render()
+ *
+ * @param Controller $controller Controller with components to beforeRender
+ * @return void
+ * @link http://book.cakephp.org/2.0/en/controllers/components.html#Component::beforeRender
+ */
+	public function beforeRender(Controller $controller) {
+		if (! $controller->request->is(array('post', 'put'))) {
 			$controller->request->data['Categories'] = $controller->Category->getCategories($controller->viewVars['blockId'], $controller->viewVars['roomId']);
 			$controller->request->data['CategoryMap'] = Hash::combine($controller->request->data['Categories'], '{n}.Category.id', '{n}');
 		}
 
 		$this->controler = $controller;
 	}
+
 }
