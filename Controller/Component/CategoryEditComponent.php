@@ -44,16 +44,16 @@ class CategoryEditComponent extends Component {
 				}
 				$category = null;
 				if (! $post['Category']['id']) {
-					$category = $controller->Category->create(array(
-						'id' => null,
-						'key' => null,
-						'name' => $post['Category']['name'],
+					$category = $controller->Category->createAll(array(
+						'Category' => array(
+							'id' => null,
+							'name' => $post['Category']['name'],
+						),
+						'CategoryOrder' => array(
+							'id' => null,
+							'weight' => $post['CategoryOrder']['weight'],
+						),
 					));
-					$category = Hash::merge($category, $controller->CategoryOrder->create(array(
-						'id' => null,
-						'category_key' => null,
-						'weight' => $post['CategoryOrder']['weight'],
-					)));
 				}
 				if (isset($controller->request->data['CategoryMap'][$post['Category']['id']])) {
 					$category = Hash::merge($post, $controller->request->data['CategoryMap'][$post['Category']['id']]);
@@ -79,7 +79,7 @@ class CategoryEditComponent extends Component {
  */
 	public function beforeRender(Controller $controller) {
 		if (! $controller->request->is(array('post', 'put'))) {
-			$controller->request->data['Categories'] = $controller->Category->getCategories($controller->viewVars['blockId'], $controller->viewVars['roomId']);
+			$controller->request->data['Categories'] = $controller->Category->getCategories();
 			$controller->request->data['CategoryMap'] = Hash::combine($controller->request->data['Categories'], '{n}.Category.id', '{n}');
 		}
 

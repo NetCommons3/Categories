@@ -15,7 +15,7 @@ App::uses('ModelBehavior', 'Model');
  * Category Behavior
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
- * @package NetCommons\Category\Model\Behavior
+ * @package NetCommons\Categories\Model\Behavior
  */
 class CategoryBehavior extends ModelBehavior {
 

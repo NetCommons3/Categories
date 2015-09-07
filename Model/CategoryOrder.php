@@ -69,6 +69,7 @@ class CategoryOrder extends CategoriesAppModel {
 	}
 
 /**
+ * 後で削除
  * validate of category order
  *
  * @param array $data received post data

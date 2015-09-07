@@ -112,14 +112,12 @@ class Category extends CategoriesAppModel {
 /**
  * Get categories
  *
- * @param int $blockId blocks.id
- * @param int $roomId rooms.id
  * @return array Categories
  */
-	public function getCategories($blockId, $roomId) {
+	public function getCategories() {
 		$conditions = array(
-			'Block.id' => $blockId,
-			'Block.room_id' => $roomId,
+			'Block.id' => Current::read('Block.id'),
+			'Block.room_id' => Current::read('Block.room_id'),
 		);
 		$categories = $this->find('all', array(
 			'recursive' => 0,
@@ -134,6 +132,8 @@ class Category extends CategoriesAppModel {
 	}
 
 /**
+ * 後で削除
+ *
  * Save categories
  * Please do the transaction and validation in the caller.
  *
@@ -191,6 +191,7 @@ class Category extends CategoriesAppModel {
 	}
 
 /**
+ * 後で削除
  * Validate Category
  *
  * @param array $data received post data
@@ -214,6 +215,7 @@ class Category extends CategoriesAppModel {
 	}
 
 /**
+ * 後で削除
  * Validate Categories
  *
  * @param array $data received post data
@@ -236,6 +238,7 @@ class Category extends CategoriesAppModel {
 	}
 
 /**
+ * 後で削除
  * Delete categories by blocks.key.
  * Please do the transaction and validation in the caller.
  *
