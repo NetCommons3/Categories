@@ -40,15 +40,13 @@ class CategoryBehavior extends ModelBehavior {
 
 		foreach ($model->data['Categories'] as $category) {
 			$model->Category->set($category['Category']);
-			$model->Category->validates();
-			if ($model->Category->validationErrors) {
+			if (! $model->Category->validates()) {
 				$model->validationErrors = Hash::merge($model->validationErrors, $model->Category->validationErrors);
 				return false;
 			}
 
 			$model->CategoryOrder->set($category['CategoryOrder']);
-			$model->CategoryOrder->validates();
-			if ($model->CategoryOrder->validationErrors) {
+			if (! $model->CategoryOrder->validates()) {
 				$model->validationErrors = Hash::merge($model->validationErrors, $model->CategoryOrder->validationErrors);
 				return false;
 			}

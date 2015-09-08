@@ -28,13 +28,25 @@ class CategoriesComponent extends Component {
 	public $components = array();
 
 /**
- * Initialize component
+ * Called after the Controller::beforeFilter() and before the controller action
  *
- * @param Controller $controller Instantiating controller
+ * @param Controller $controller Controller with components to startup
  * @return void
+ * @throws ForbiddenException
  */
-	public function initialize(Controller $controller) {
+	public function startup(Controller $controller) {
 		$this->controller = $controller;
+		$this->controller->Category = ClassRegistry::init('Categories.Category');
+
+		$result = $this->controller->Category->getCategories(
+			Current::read('Block.id'),
+			Current::read('Block.room_id')
+		);
+		$this->controller->set('categories', $result);
+
+		if (! in_array('Categories.Category', $this->controller->helpers)) {
+			$this->controller->helpers[] = 'Categories.Category';
+		}
 	}
 
 /**

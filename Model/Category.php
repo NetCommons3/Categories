@@ -112,12 +112,14 @@ class Category extends CategoriesAppModel {
 /**
  * Get categories
  *
+ * @param int $blockId blocks.id
+ * @param int $roomId rooms.id
  * @return array Categories
  */
-	public function getCategories() {
+	public function getCategories($blockId, $roomId) {
 		$conditions = array(
-			'Block.id' => Current::read('Block.id'),
-			'Block.room_id' => Current::read('Block.room_id'),
+			'Block.id' => $blockId,
+			'Block.room_id' => $roomId,
 		);
 		$categories = $this->find('all', array(
 			'recursive' => 0,

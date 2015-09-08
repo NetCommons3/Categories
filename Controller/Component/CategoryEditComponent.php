@@ -79,8 +79,16 @@ class CategoryEditComponent extends Component {
  */
 	public function beforeRender(Controller $controller) {
 		if (! $controller->request->is(array('post', 'put'))) {
-			$controller->request->data['Categories'] = $controller->Category->getCategories();
-			$controller->request->data['CategoryMap'] = Hash::combine($controller->request->data['Categories'], '{n}.Category.id', '{n}');
+			if (isset($controller->request->data['Block']['id'])) {
+				$controller->request->data['Categories'] = $controller->Category->getCategories(
+					$controller->request->data['Block']['id'],
+					$controller->request->data['Block']['room_id']
+				);
+				$controller->request->data['CategoryMap'] = Hash::combine($controller->request->data['Categories'], '{n}.Category.id', '{n}');
+			} else {
+				$controller->request->data['Categories'] = array();
+				$controller->request->data['CategoryMap'] = array();
+			}
 		}
 
 		$this->controler = $controller;
