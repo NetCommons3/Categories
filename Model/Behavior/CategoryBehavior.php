@@ -110,41 +110,4 @@ class CategoryBehavior extends ModelBehavior {
 
 		return parent::afterSave($model, $created, $options);
 	}
-
-/**
- * Delete categories by blocks.key
- *
- * @param Model $model Model using this behavior
- * @param string $blockKey blocks.key
- * @return bool True on success
- * @throws InternalErrorException
- */
-	public function deleteCategoriesByBlockKey(Model $model, $blockKey) {
-		$model->loadModels([
-			'Category' => 'Categories.Category',
-			'CategoryOrder' => 'Categories.CategoryOrder',
-			'Block' => 'Blocks.Block',
-		]);
-
-		$blocks = $model->Block->find('list', array(
-			'recursive' => -1,
-			'conditions' => array(
-				$model->Block->alias . '.key' => $blockKey
-			),
-		));
-		$blocks = array_keys($blocks);
-
-		//Categoryデータ削除
-		if (! $model->Category->deleteAll(array($model->Category->alias . '.block_id' => $blocks), false)) {
-			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-		}
-
-		//CategoryOrderデータ削除
-		if (! $model->CategoryOrder->deleteAll(array($model->CategoryOrder->alias . '.block_key' => $blockKey), false)) {
-			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
-		}
-
-		return true;
-	}
-
 }
