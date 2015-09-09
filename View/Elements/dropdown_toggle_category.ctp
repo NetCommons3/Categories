@@ -33,7 +33,7 @@
 
 <?php foreach ($options['categories'] as $key => $category) : ?>
 	<?php
-		if ($key === $currentCategoryId) {
+		if ((int)$key === (int)$currentCategoryId) {
 			$activeClass = ' class="active"';
 		} else {
 			$activeClass = '';
