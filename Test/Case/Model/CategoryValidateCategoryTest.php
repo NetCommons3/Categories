@@ -39,7 +39,7 @@ class CategoryValidateCategoryTest extends CategoryTestBase {
 	);
 
 /**
- * Test case of notEmpty
+ * Test case of notBlank
  *
  * @var array
  */
@@ -84,7 +84,7 @@ class CategoryValidateCategoryTest extends CategoryTestBase {
 	}
 
 /**
- * Expect Category `block_id` error by notEmpty error on update
+ * Expect Category `block_id` error by notBlank error on update
  *
  * @return void
  */
@@ -112,7 +112,7 @@ class CategoryValidateCategoryTest extends CategoryTestBase {
 	}
 
 /**
- * Expect Category `name` validation error by notEmpty error on create
+ * Expect Category `name` validation error by notBlank error on create
  *
  * @return void
  */
@@ -141,7 +141,7 @@ class CategoryValidateCategoryTest extends CategoryTestBase {
 	}
 
 /**
- * Expect Category `key` error by notEmpty error on update
+ * Expect Category `key` error by notBlank error on update
  *
  * @return void
  */

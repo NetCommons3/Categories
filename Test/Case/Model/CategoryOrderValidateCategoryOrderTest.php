@@ -33,7 +33,7 @@ class CategoryOrderValidateCategoryOrderTest extends CategoryTestBase {
 	);
 
 /**
- * Test case of notEmpty
+ * Test case of notBlank
  *
  * @var array
  */
@@ -87,7 +87,7 @@ class CategoryOrderValidateCategoryOrderTest extends CategoryTestBase {
 	}
 
 /**
- * Expect CategoryOrder `block_key` error by notEmpty error on update
+ * Expect CategoryOrder `block_key` error by notBlank error on update
  *
  * @return void
  */
@@ -115,7 +115,7 @@ class CategoryOrderValidateCategoryOrderTest extends CategoryTestBase {
 	}
 
 /**
- * Expect CategoryOrder `block_key` error by notEmpty error on update
+ * Expect CategoryOrder `block_key` error by notBlank error on update
  *
  * @return void
  */
