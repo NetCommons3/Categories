@@ -48,40 +48,4 @@ class CategoriesComponent extends Component {
 			$this->controller->helpers[] = 'Categories.Category';
 		}
 	}
-
-/**
- * initCategories
- *
- * @param bool $hasEmpty True on has empty
- * @param string $key keyPath on Hash::combine
- * @return void
- * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
- */
-	public function initCategories($hasEmpty = false, $key = '{n}.CategoryOrder.weight') {
-		//$categories = $this->controller->Category->getCategories(
-		//	$this->controller->viewVars['blockId'],
-		//	$this->controller->viewVars['roomId']
-		//);
-		//if ($hasEmpty) {
-		//	$categories[] = array(
-		//		'Category' => array(
-		//			'id' => '0',
-		//			'key' => null,
-		//			'name' => null,
-		//		),
-		//		'CategoryOrder' => array(
-		//			'weight' => '0',
-		//		)
-		//	);
-		//}
-		//
-		//$categories = Hash::remove($categories, '{n}.Block');
-		//$categories = Hash::remove($categories, '{n}.TrackableCreator');
-		//$categories = Hash::remove($categories, '{n}.TrackableUpdater');
-		//$categories = Hash::sort($categories, '{n}.CategoryOrder.weight', 'asc');
-		//$categories = Hash::combine($categories, $key, '{n}');
-		//
-		//$categories = $this->controller->camelizeKeyRecursive($categories);
-		//$this->controller->set(['categories' => $categories]);
-	}
 }
