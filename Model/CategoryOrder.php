@@ -38,8 +38,8 @@ class CategoryOrder extends CategoriesAppModel {
 	public function beforeValidate($options = array()) {
 		$this->validate = Hash::merge($this->validate, array(
 			'block_key' => array(
-				'notEmpty' => array(
-					'rule' => array('notEmpty'),
+				'notBlank' => array(
+					'rule' => array('notBlank'),
 					'message' => __d('net_commons', 'Invalid request.'),
 					'allowEmpty' => false,
 					//'required' => true,
@@ -47,8 +47,8 @@ class CategoryOrder extends CategoriesAppModel {
 				),
 			),
 			'category_key' => array(
-				'notEmpty' => array(
-					'rule' => array('notEmpty'),
+				'notBlank' => array(
+					'rule' => array('notBlank'),
 					'message' => __d('net_commons', 'Invalid request.'),
 					'allowEmpty' => false,
 					'required' => true,
@@ -66,20 +66,5 @@ class CategoryOrder extends CategoriesAppModel {
 		));
 
 		return parent::beforeValidate($options);
-	}
-
-/**
- * validate of category order
- *
- * @param array $data received post data
- * @return bool True on success, false on validation errors
- */
-	public function validateCategoryOrder($data) {
-		$this->set($data);
-		$this->validates();
-		if ($this->validationErrors) {
-			return false;
-		}
-		return true;
 	}
 }

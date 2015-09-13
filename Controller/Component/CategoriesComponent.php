@@ -28,49 +28,24 @@ class CategoriesComponent extends Component {
 	public $components = array();
 
 /**
- * Initialize component
+ * Called after the Controller::beforeFilter() and before the controller action
  *
- * @param Controller $controller Instantiating controller
+ * @param Controller $controller Controller with components to startup
  * @return void
+ * @throws ForbiddenException
  */
-	public function initialize(Controller $controller) {
+	public function startup(Controller $controller) {
 		$this->controller = $controller;
-	}
+		$this->controller->Category = ClassRegistry::init('Categories.Category');
 
-/**
- * initCategories
- *
- * @param bool $hasEmpty True on has empty
- * @param string $key keyPath on Hash::combine
- * @return void
- * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
- */
-	public function initCategories($hasEmpty = false, $key = '{n}.CategoryOrder.weight') {
-		$categories = $this->controller->Category->getCategories(
-			$this->controller->viewVars['blockId'],
-			$this->controller->viewVars['roomId']
+		$result = $this->controller->Category->getCategories(
+			Current::read('Block.id'),
+			Current::read('Block.room_id')
 		);
-		if ($hasEmpty) {
-			$categories[] = array(
-				'Category' => array(
-					'id' => '0',
-					'key' => null,
-					'name' => null,
-				),
-				'CategoryOrder' => array(
-					'weight' => '0',
-				)
-			);
+		$this->controller->set('categories', $result);
+
+		if (! in_array('Categories.Category', $this->controller->helpers)) {
+			$this->controller->helpers[] = 'Categories.Category';
 		}
-
-		$categories = Hash::remove($categories, '{n}.Block');
-		$categories = Hash::remove($categories, '{n}.TrackableCreator');
-		$categories = Hash::remove($categories, '{n}.TrackableUpdater');
-		$categories = Hash::sort($categories, '{n}.CategoryOrder.weight', 'asc');
-		$categories = Hash::combine($categories, $key, '{n}');
-
-		$categories = $this->controller->camelizeKeyRecursive($categories);
-		$this->controller->set(['categories' => $categories]);
 	}
-
 }
