@@ -68,24 +68,24 @@ class CategoryTestBase extends YACakeTestCase {
  * @param array $result result data
  * @return void
  */
-	protected function _assertArray($expected, $result) {
-		$result = Hash::remove($result, 'created');
-		$result = Hash::remove($result, 'created_user');
-		$result = Hash::remove($result, 'modified');
-		$result = Hash::remove($result, 'modified_user');
-		$result = Hash::remove($result, '{s}.created');
-		$result = Hash::remove($result, '{s}.created_user');
-		$result = Hash::remove($result, '{s}.modified');
-		$result = Hash::remove($result, '{s}.modified_user');
-		$result = Hash::remove($result, '{n}.{s}.created');
-		$result = Hash::remove($result, '{n}.{s}.created_user');
-		$result = Hash::remove($result, '{n}.{s}.modified');
-		$result = Hash::remove($result, '{n}.{s}.modified_user');
-		$result = Hash::remove($result, 'TrackableCreator');
-		$result = Hash::remove($result, 'TrackableUpdater');
-		$result = Hash::remove($result, '{n}.TrackableCreator');
-		$result = Hash::remove($result, '{n}.TrackableUpdater');
-
-		$this->assertEquals($expected, $result);
-	}
+	//protected function _assertArray($expected, $result) {
+	//	$result = Hash::remove($result, 'created');
+	//	$result = Hash::remove($result, 'created_user');
+	//	$result = Hash::remove($result, 'modified');
+	//	$result = Hash::remove($result, 'modified_user');
+	//	$result = Hash::remove($result, '{s}.created');
+	//	$result = Hash::remove($result, '{s}.created_user');
+	//	$result = Hash::remove($result, '{s}.modified');
+	//	$result = Hash::remove($result, '{s}.modified_user');
+	//	$result = Hash::remove($result, '{n}.{s}.created');
+	//	$result = Hash::remove($result, '{n}.{s}.created_user');
+	//	$result = Hash::remove($result, '{n}.{s}.modified');
+	//	$result = Hash::remove($result, '{n}.{s}.modified_user');
+	//	$result = Hash::remove($result, 'TrackableCreator');
+	//	$result = Hash::remove($result, 'TrackableUpdater');
+	//	$result = Hash::remove($result, '{n}.TrackableCreator');
+	//	$result = Hash::remove($result, '{n}.TrackableUpdater');
+	//
+	//	$this->assertEquals($expected, $result);
+	//}
 }

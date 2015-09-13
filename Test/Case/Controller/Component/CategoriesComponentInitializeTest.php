@@ -26,7 +26,15 @@ class CategoriesComponentInitializeTest extends CategoriesComponentTestBase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->_initCategoriesComponent();
+		//$this->_initCategoriesComponent();
+	}
+
+/**
+ * Expect to testDummy
+ *
+ * @return void
+ */
+	public function testDummy() {
 	}
 
 }

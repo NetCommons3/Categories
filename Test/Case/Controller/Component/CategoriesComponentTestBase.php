@@ -113,8 +113,8 @@ class CategoriesComponentTestBase extends YACakeTestCase {
 		parent::setUp();
 		Configure::write('Config.language', 'ja');
 
-		//テストコントローラ読み込み
-		$this->_initCategoriesComponent();
+		////テストコントローラ読み込み
+		//$this->_initCategoriesComponent();
 	}
 
 /**
@@ -132,14 +132,6 @@ class CategoriesComponentTestBase extends YACakeTestCase {
 	}
 
 /**
- * Called before the test().
- *
- * @return void
- */
-	public function test() {
-	}
-
-/**
  * Initialize of CategoriesComponent
  *
  * @param array $params Set CakeRequest->params
@@ -147,15 +139,15 @@ class CategoriesComponentTestBase extends YACakeTestCase {
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
 	protected function _initCategoriesComponent($params = []) {
-		//テストコントローラ読み込み
-		$CakeRequest = new CakeRequest();
-		$CakeRequest->params = Hash::merge($CakeRequest->params, $params);
-
-		$CakeResponse = new CakeResponse();
-		$this->CategoryController = new TestCategoriesController($CakeRequest, $CakeResponse);
-		//コンポーネント読み込み
-		$Collection = new ComponentCollection();
-		$this->Categories = new CategoriesComponent($Collection);
+		////テストコントローラ読み込み
+		//$CakeRequest = new CakeRequest();
+		//$CakeRequest->params = Hash::merge($CakeRequest->params, $params);
+		//
+		//$CakeResponse = new CakeResponse();
+		//$this->CategoryController = new TestCategoriesController($CakeRequest, $CakeResponse);
+		////コンポーネント読み込み
+		//$Collection = new ComponentCollection();
+		//$this->Categories = new CategoriesComponent($Collection);
 	}
 
 }

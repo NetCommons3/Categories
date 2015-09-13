@@ -105,6 +105,7 @@ class CategoryHelper extends AppHelper {
 /**
  * Output categories select element
  *
+ * @param string $fieldName This should be "Modelname.fieldname"
  * @param array $attributes Array of attributes and HTML arguments.
  * @return string HTML tags
  */
