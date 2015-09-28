@@ -18,7 +18,7 @@ App::uses('CategoryTestBase', 'Categories.Test/Case/Model');
  *
  * @author Ryo Ozawa <ozawa.ryo@withone.co.jp>
  * @package NetCommons\Categories\Test\Case\Model
- * @SuppressWarnings(PHPMD.TooManyMethods)
+ * @SuppressWarnings(PHPMD)
  */
 class CategorySaveCategoriesTest extends CategoryTestBase {
 
