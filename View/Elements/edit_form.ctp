@@ -24,15 +24,15 @@ if (! isset($this->request->data['CategoryMap'])) {
 
 <?php
 	foreach ($this->request->data['CategoryMap'] as $category) {
-		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
-		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
-		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
-		echo $this->Form->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
 	}
 	$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
 ?>
 
-<?php $this->Form->unlockField('Categories'); ?>
+<?php $this->NetCommonsForm->unlockField('Categories'); ?>
 
 <div class="panel panel-default" ng-controller="Categories" ng-init="initialize(<?php echo h(json_encode(['categories' => $categories])); ?>)">
 	<div class="panel-heading">
