@@ -42,9 +42,9 @@ class CategoryFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => '1',
-			'block_id' => '1',
+			'block_id' => '2',
 			'key' => 'category_1',
-			'name' => 'category_1',
+			'name' => 'Category 1',
 			'created_user' => '1',
 			'created' => '2015-01-28 04:56:56',
 			'modified_user' => '1',
@@ -52,9 +52,9 @@ class CategoryFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '2',
-			'block_id' => '1',
+			'block_id' => '2',
 			'key' => 'category_2',
-			'name' => 'category_2',
+			'name' => 'Category 2',
 			'created_user' => '1',
 			'created' => '2015-01-28 04:56:56',
 			'modified_user' => '1',
@@ -62,27 +62,14 @@ class CategoryFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '3',
-			'block_id' => '1',
+			'block_id' => '2',
 			'key' => 'category_3',
-			'name' => 'category_3',
+			'name' => 'Category 3',
 			'created_user' => '1',
 			'created' => '2015-01-28 04:56:56',
 			'modified_user' => '1',
 			'modified' => '2015-01-28 04:56:56'
 		),
-
-		//Faqs plugin
-		array(
-			'id' => '100',
-			'block_id' => '100',
-			'key' => 'category_100',
-			'name' => 'category name 100',
-			'created_user' => '1',
-			'created' => '2015-01-28 04:56:56',
-			'modified_user' => '1',
-			'modified' => '2015-01-28 04:56:56'
-		),
-
 	);
 
 }
