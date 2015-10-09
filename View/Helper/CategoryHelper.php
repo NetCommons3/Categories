@@ -67,12 +67,13 @@ class CategoryHelper extends AppHelper {
 
 		//URLのセット
 		if (! isset($options['url'])) {
-			$options['url'] = array(
+			$options['url'] = NetCommonsUrl::actionUrlAsArray(array(
 				'plugin' => $this->_View->params['plugin'],
 				'controller' => $this->_View->params['controller'],
 				'action' => $this->_View->params['action'],
-				Current::read('Frame.id')
-			);
+				'block_id' => Current::read('Block.id'),
+				'frame_id' => Current::read('Frame.id')
+			));
 		}
 
 		//オプションのセット
