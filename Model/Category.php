@@ -28,7 +28,8 @@ class Category extends CategoriesAppModel {
  * @var array
  */
 	public $actsAs = array(
-		'NetCommons.OriginalKey'
+		//'NetCommons.OriginalKey',
+		'M17n.M17n'
 	);
 
 /**

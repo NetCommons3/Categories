@@ -55,16 +55,18 @@ class CategoryBehavior extends ModelBehavior {
 	}
 
 /**
- * afterSave is called after a model is saved.
+ * beforeSave is called before a model is saved. Returning false from a beforeSave callback
+ * will abort the save operation.
  *
  * @param Model $model Model using this behavior
- * @param bool $created True if this save created a new record
  * @param array $options Options passed from Model::save().
- * @return bool
+ * @return mixed False if the operation should abort. Any other result will continue.
  * @throws InternalErrorException
  * @see Model::save()
  */
-	public function afterSave(Model $model, $created, $options = array()) {
+	public function beforeSave(Model $model, $options = array()) {
+		parent::beforeSave($model, $options);
+
 		if (! isset($model->data['Categories'])) {
 			return true;
 		}
@@ -107,7 +109,6 @@ class CategoryBehavior extends ModelBehavior {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
 		}
-
-		return parent::afterSave($model, $created, $options);
+		return true;
 	}
 }

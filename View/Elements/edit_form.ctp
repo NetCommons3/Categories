@@ -26,6 +26,7 @@ if (! isset($this->request->data['CategoryMap'])) {
 	foreach ($this->request->data['CategoryMap'] as $category) {
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.language_id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
 	}
@@ -66,6 +67,7 @@ if (! isset($this->request->data['CategoryMap'])) {
 					</div>
 
 					<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.category.id">
+					<input type="hidden" name="data[Categories][{{$index}}][Category][language_id]" ng-value="c.category.languageId">
 					<input type="hidden" name="data[Categories][{{$index}}][Category][key]" ng-value="c.category.key">
 					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][id]" ng-value="c.categoryOrder.id">
 					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][category_key]" ng-value="c.categoryOrder.categoryKey">
