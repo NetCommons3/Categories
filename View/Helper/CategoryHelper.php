@@ -14,7 +14,7 @@ App::uses('AppHelper', 'View/Helper');
 /**
  * Category Helper
  *
- * カテゴリーの選択要素を提供します。
+ * カテゴリーの選択要素を提供します。<br>
  * [一覧での絞り込み](#dropdowntoggle)<br>
  * [コンテンツ登録時の選択](#select)<br>
  *
@@ -66,22 +66,22 @@ class CategoryHelper extends AppHelper {
  * #### 出力結果
  * ```
  * <ul class="dropdown-menu" role="menu">
- *	<li class="active">
- *		<a href="/faqs/faq_questions/index/4?frame_id=8">カテゴリ選択</a>
- *	</li>
- *	<li>
- *		<a href="/faqs/faq_questions/index/4/category_id:1?frame_id=8">国語</a>
- *	</li>
- *	<li>
- *		<a href="/faqs/faq_questions/index/4/category_id:2?frame_id=8">算数</a>
- *	</li>
- *	<li>
- *		<a href="/faqs/faq_questions/index/4/category_id:3?frame_id=8">理科</a>
- *	</li>
- *	<li>
- *		<a href="/faqs/faq_questions/index/4/category_id:4?frame_id=8">社会</a>
- *	</li>
- *</ul>
+ * 	<li class="active">
+ * 		<a href="/faqs/faq_questions/index/4?frame_id=8">カテゴリ選択</a>
+ * 	</li>
+ * 	<li>
+ * 		<a href="/faqs/faq_questions/index/4/category_id:1?frame_id=8">国語</a>
+ * 	</li>
+ * 	<li>
+ * 		<a href="/faqs/faq_questions/index/4/category_id:2?frame_id=8">算数</a>
+ * 	</li>
+ * 	<li>
+ * 		<a href="/faqs/faq_questions/index/4/category_id:3?frame_id=8">理科</a>
+ * 	</li>
+ * 	<li>
+ * 		<a href="/faqs/faq_questions/index/4/category_id:4?frame_id=8">社会</a>
+ * 	</li>
+ * </ul>
  * ```
  *
  * @param array $options Array of options and HTML arguments.
