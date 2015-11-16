@@ -16,6 +16,20 @@ App::uses('Component', 'Controller');
 /**
  * Categories Component
  *
+ * 該当ブロックのカテゴリーをViewにセットします。
+ *
+ * #### サンプルコード
+ * ##### コントローラー
+ * ```
+ * public $components = array(
+ * 	'Categories.CategoryEdit'
+ * )
+ * ```
+ * ##### ビュー
+ * ```
+ *<?php echo $this->element('Categories.edit_form'); ?>
+ * ```
+ *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Categories\Controller\Component
  */

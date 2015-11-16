@@ -15,6 +15,17 @@ App::uses('Component', 'Controller');
 /**
  * Categories Component
  *
+ * 該当ブロックのカテゴリー一覧をViewにセットし、CategoryHelperを追加します。
+ *
+ * #### サンプルコード
+ * ```
+ * public $components = array(
+ * 	'Categories.Categories'
+ * )
+ * ```
+ *
+ * [CategoryHelperの利用](https://github.com/NetCommons3/NetCommons3Docs/blob/master/phpdocMd/Categories/CategoryHelper.md#categoryhelper)
+ *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Categories\Controller\Component
  */

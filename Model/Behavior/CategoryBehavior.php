@@ -14,6 +14,15 @@ App::uses('ModelBehavior', 'Model');
 /**
  * Category Behavior
  *
+ * 該当ブロックのカテゴリーを登録します。
+ *
+ * #### サンプルコード
+ * ```
+ * public $actsAs = array(
+ * 	'Categories.Category'
+ * )
+ * ```
+ *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Categories\Model\Behavior
  */
