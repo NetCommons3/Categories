@@ -124,7 +124,10 @@ class CategoryHelper extends AppHelper {
 		} else {
 			$options['categories'] = array();
 		}
-		$options['categories'] = Hash::merge($options['categories'], Hash::combine($this->_View->viewVars['categories'], '{n}.Category.id', '{n}.Category'));
+		$options['categories'] = Hash::merge(
+			$options['categories'],
+			Hash::combine($this->_View->viewVars['categories'], '{n}.Category.id', '{n}.Category')
+		);
 
 		if (isset($options['header']) && $options['header']) {
 			if (! is_string($options['header'])) {
@@ -184,7 +187,9 @@ class CategoryHelper extends AppHelper {
 			$attributes['empty'] = array(0 => __d('categories', 'Select Category'));
 		}
 
-		$categories = Hash::combine($this->_View->viewVars['categories'], '{n}.Category.id', '{n}.Category.name');
+		$categories = Hash::combine(
+			$this->_View->viewVars['categories'], '{n}.Category.id', '{n}.Category.name'
+		);
 		$output .= $this->NetCommonsForm->input($fieldName, Hash::merge(array(
 			'label' => __d('categories', 'Category'),
 			'type' => 'select',

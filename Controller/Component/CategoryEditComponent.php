@@ -70,7 +70,9 @@ class CategoryEditComponent extends Component {
 					));
 				}
 				if (isset($controller->request->data['CategoryMap'][$post['Category']['id']])) {
-					$category = Hash::merge($post, $controller->request->data['CategoryMap'][$post['Category']['id']]);
+					$category = Hash::merge(
+						$post, $controller->request->data['CategoryMap'][$post['Category']['id']]
+					);
 				}
 				$category['Category']['block_id'] = $controller->request->data['Block']['id'];
 				$category['CategoryOrder']['block_key'] = $controller->request->data['Block']['key'];
@@ -98,7 +100,9 @@ class CategoryEditComponent extends Component {
 					$controller->request->data['Block']['id'],
 					$controller->request->data['Block']['room_id']
 				);
-				$controller->request->data['CategoryMap'] = Hash::combine($controller->request->data['Categories'], '{n}.Category.id', '{n}');
+				$controller->request->data['CategoryMap'] = Hash::combine(
+					$controller->request->data['Categories'], '{n}.Category.id', '{n}'
+				);
 			} else {
 				$controller->request->data['Categories'] = array();
 				$controller->request->data['CategoryMap'] = array();
