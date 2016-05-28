@@ -32,14 +32,7 @@
 <?php endif; ?>
 
 <?php foreach ($options['categories'] as $key => $category) : ?>
-	<?php
-		if ((int)$key === (int)$currentCategoryId) {
-			$activeClass = ' class="active"';
-		} else {
-			$activeClass = '';
-		}
-	?>
-	<li<?php echo $activeClass; ?>>
+	<li>
 		<?php echo $this->Html->link($category['name'], Hash::merge($options['url'], array('category_id' => $category['id']))); ?>
 	</li>
 <?php endforeach; ?>
