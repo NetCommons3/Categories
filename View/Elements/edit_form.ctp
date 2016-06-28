@@ -67,10 +67,6 @@ if (! isset($this->request->data['CategoryMap'])) {
 					</div>
 
 					<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.category.id">
-					<input type="hidden" name="data[Categories][{{$index}}][Category][language_id]" ng-value="c.category.languageId">
-					<input type="hidden" name="data[Categories][{{$index}}][Category][key]" ng-value="c.category.key">
-					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][id]" ng-value="c.categoryOrder.id">
-					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][category_key]" ng-value="c.categoryOrder.categoryKey">
 					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][weight]" ng-value="{{$index + 1}}">
 					<input type="text" name="data[Categories][{{$index}}][Category][name]" ng-model="c.category.name" class="form-control" required autofocus>
 
