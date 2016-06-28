@@ -10,7 +10,7 @@
  * @param {string} Controller name
  * @param {function($scope)} Controller
  */
-NetCommonsApp.controller('Categories', function($scope) {
+NetCommonsApp.controller('Categories', ['$scope', function($scope) {
 
   /**
    * categories
@@ -69,4 +69,4 @@ NetCommonsApp.controller('Categories', function($scope) {
     $scope.categories[dest] = targetCategory;
   };
 
-});
+}]);
