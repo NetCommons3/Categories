@@ -29,6 +29,7 @@ if (! isset($this->request->data['CategoryMap'])) {
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.language_id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.category_key');
 	}
 	$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
 ?>
