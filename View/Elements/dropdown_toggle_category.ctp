@@ -11,7 +11,7 @@
 ?>
 
 <?php if (isset($options['displayMenu']) && $options['displayMenu']) : ?>
-	<div class="dropdown">
+	<div class="dropdown btn-group">
 		<button type="button" class="btn btn-default category-dropdown-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			<div class="clearfix">
 				<div class="pull-left">
