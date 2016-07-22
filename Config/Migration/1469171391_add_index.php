@@ -1,6 +1,6 @@
 <?php
 /**
- * Init migration
+ * AddIndex migration
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @link http://www.netcommons.org NetCommons Project
@@ -9,7 +9,7 @@
  */
 
 /**
- * Init migration
+ * AddIndex migration
  *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Categories\Config\Migration
