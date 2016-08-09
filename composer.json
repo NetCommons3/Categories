@@ -9,8 +9,8 @@
     },
     "require": {
         "cakedc/migrations":            "~2.2",
-        "netcommons/blocks":            "dev-master",
-        "netcommons/net-commons":       "dev-master"
+        "netcommons/blocks":            "@dev",
+        "netcommons/net-commons":       "@dev"
     },
     "license": "NetCommons License",
     "authors": [
