@@ -14,7 +14,7 @@
 	<div class="dropdown btn-group">
 		<button type="button" class="btn btn-default category-dropdown-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			<div class="clearfix">
-				<div class="pull-left">
+				<div class="pull-left nc-category-ellipsis">
 					<?php echo h($options['categories'][$currentCategoryId]['name']); ?>
 				</div>
 				<div class="pull-right">
