@@ -148,6 +148,41 @@ class Category extends CategoriesAppModel {
 	}
 
 /**
+ * カテゴリーの取得
+ *
+ * @param int $categoryId カテゴリーID
+ * @param int $roomId rooms.id
+ * @return array Categories
+ */
+	public function getCategory($categoryId) {
+		$conditions = array(
+			'Category.id' => $categoryId,
+		);
+
+		$this->bindModel(array(
+			'belongsTo' => array(
+				'CategoryOrder' => array(
+					'className' => 'Categories.CategoryOrder',
+					'foreignKey' => false,
+					'conditions' => 'CategoryOrder.category_key=Category.key',
+					'fields' => '',
+					'order' => array('CategoryOrder.weight' => 'ASC')
+				),
+			)
+		), false);
+
+		$belongsTo = $this->bindModelCategoryLang();
+		$this->bindModel($belongsTo, true);
+
+		$categories = $this->find('first', array(
+			'recursive' => 0,
+			'conditions' => $conditions,
+		));
+
+		return $categories;
+	}
+
+/**
  * カテゴリ言語テーブルのバインド条件を戻す
  *
  * @param string $joinKey JOINするKeyフィールド(default: Category.id)
