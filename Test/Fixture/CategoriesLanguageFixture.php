@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryFixture
+ * CategoriesLanguageFixture
  *
  * @author Noriko Arai <arai@nii.ac.jp>
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
@@ -10,11 +10,11 @@
  */
 
 /**
- * CategoryFixture
+ * CategoriesLanguageFixture
  *
  * @package NetCommons\Categories\Test\Fixture
  */
-class CategoryFixture extends CakeTestFixture {
+class CategoriesLanguageFixture extends CakeTestFixture {
 
 /**
  * Records
@@ -24,30 +24,33 @@ class CategoryFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => '1',
-			'block_id' => '2',
-			'key' => 'category_1',
+			'category_id' => '1',
+			'language_id' => '2',
+			'name' => 'Category 1',
 			'created_user' => '1',
-			'created' => '2015-01-28 04:56:56',
+			'created' => '2016-12-06 09:58:24',
 			'modified_user' => '1',
-			'modified' => '2015-01-28 04:56:56'
+			'created' => '2016-12-06 09:58:24',
 		),
 		array(
 			'id' => '2',
-			'block_id' => '2',
-			'key' => 'category_2',
+			'category_id' => '2',
+			'language_id' => '2',
+			'name' => 'Category 2',
 			'created_user' => '1',
-			'created' => '2015-01-28 04:56:56',
+			'created' => '2016-12-06 09:58:24',
 			'modified_user' => '1',
-			'modified' => '2015-01-28 04:56:56'
+			'created' => '2016-12-06 09:58:24',
 		),
 		array(
 			'id' => '3',
-			'block_id' => '2',
-			'key' => 'category_3',
+			'category_id' => '3',
+			'language_id' => '2',
+			'name' => 'Category 3',
 			'created_user' => '1',
-			'created' => '2015-01-28 04:56:56',
+			'created' => '2016-12-06 09:58:24',
 			'modified_user' => '1',
-			'modified' => '2015-01-28 04:56:56'
+			'created' => '2016-12-06 09:58:24',
 		),
 	);
 

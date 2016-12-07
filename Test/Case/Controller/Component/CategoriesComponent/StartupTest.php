@@ -41,6 +41,8 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 	public function setUp() {
 		parent::setUp();
 
+		Current::write('Language.id', '2');
+
 		//テストプラグインのロード
 		NetCommonsCakeTestCase::loadTestPlugin($this, 'Categories', 'TestCategories');
 	}
@@ -61,6 +63,7 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
  * startup()のテスト
  *
  * @return void
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
 	public function testStartup() {
 		//テストコントローラ生成
@@ -83,22 +86,36 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'id' => '1',
 					'block_id' => '2',
 					'key' => 'category_1',
-					'language_id' => '2',
-					'name' => 'Category 1',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:56:56',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:56:56',
+				),
+				'Block' => array(
+					'id' => '2',
+					'room_id' => '2',
+					'plugin_key' => 'categories',
+					'key' => 'block_1',
+					'public_type' => '1',
+					'publish_start' => null,
+					'publish_end' => null,
+					'content_count' => '0',
+				),
+				'TrackableCreator' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
+				),
+				'TrackableUpdater' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
 				),
 				'CategoryOrder' => array(
 					'id' => '1',
 					'category_key' => 'category_1',
 					'block_key' => 'block_1',
 					'weight' => '1',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:57:05',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:57:05',
+				),
+				'CategoriesLanguage' => array(
+					'id' => '1',
+					'language_id' => '2',
+					'category_id' => '1',
+					'name' => 'Category 1',
+					'is_origin' => true,
+					'is_translation' => false,
 				),
 			),
 			1 => array(
@@ -106,22 +123,36 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'id' => '2',
 					'block_id' => '2',
 					'key' => 'category_2',
-					'language_id' => '2',
-					'name' => 'Category 2',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:56:56',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:56:56',
+				),
+				'Block' => array(
+					'id' => '2',
+					'room_id' => '2',
+					'plugin_key' => 'categories',
+					'key' => 'block_1',
+					'public_type' => '1',
+					'publish_start' => null,
+					'publish_end' => null,
+					'content_count' => '0',
+				),
+				'TrackableCreator' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
+				),
+				'TrackableUpdater' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
 				),
 				'CategoryOrder' => array(
 					'id' => '2',
 					'category_key' => 'category_2',
 					'block_key' => 'block_1',
 					'weight' => '2',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:57:05',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:57:05',
+				),
+				'CategoriesLanguage' => array(
+					'id' => '2',
+					'language_id' => '2',
+					'category_id' => '2',
+					'name' => 'Category 2',
+					'is_origin' => true,
+					'is_translation' => false,
 				),
 			),
 			2 => array(
@@ -129,26 +160,47 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'id' => '3',
 					'block_id' => '2',
 					'key' => 'category_3',
-					'language_id' => '2',
-					'name' => 'Category 3',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:56:56',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:56:56',
+				),
+				'Block' => array(
+					'id' => '2',
+					'room_id' => '2',
+					'plugin_key' => 'categories',
+					'key' => 'block_1',
+					'public_type' => '1',
+					'publish_start' => null,
+					'publish_end' => null,
+					'content_count' => '0',
+				),
+				'TrackableCreator' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
+				),
+				'TrackableUpdater' => array(
+					'id' => '1', 'handlename' => 'System Administrator',
 				),
 				'CategoryOrder' => array(
 					'id' => '3',
 					'category_key' => 'category_3',
 					'block_key' => 'block_1',
 					'weight' => '3',
-					'created_user' => '1',
-					'created' => '2015-01-28 04:57:05',
-					'modified_user' => '1',
-					'modified' => '2015-01-28 04:57:05',
+				),
+				'CategoriesLanguage' => array(
+					'id' => '3',
+					'language_id' => '2',
+					'category_id' => '3',
+					'name' => 'Category 3',
+					'is_origin' => true,
+					'is_translation' => false,
 				),
 			),
 		);
-		$this->assertEquals($this->vars['categories'], $expected);
+
+		$actual = $this->vars['categories'];
+		$actual = Hash::remove($actual, '{n}.{s}.created_user');
+		$actual = Hash::remove($actual, '{n}.{s}.created');
+		$actual = Hash::remove($actual, '{n}.{s}.modified_user');
+		$actual = Hash::remove($actual, '{n}.{s}.modified');
+
+		$this->assertEquals($actual, $expected);
 		$this->assertTrue(in_array('Categories.Category', $this->controller->helpers, true));
 	}
 

@@ -26,7 +26,8 @@ if (! isset($this->request->data['CategoryMap'])) {
 	foreach ($this->request->data['CategoryMap'] as $category) {
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.language_id');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoriesLanguage.id');
+		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoriesLanguage.language_id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
 		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.category_key');
@@ -75,7 +76,8 @@ if (! isset($this->request->data['CategoryMap'])) {
 
 					<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.category.id">
 					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][weight]" ng-value="{{$index + 1}}">
-					<input type="text" name="data[Categories][{{$index}}][Category][name]" ng-model="c.category.name" class="form-control" required autofocus>
+					<input type="text" name="data[Categories][{{$index}}][CategoriesLanguage][name]"
+							ng-model="c.categoriesLanguage.name" class="form-control" required autofocus>
 
 					<div class="input-group-btn">
 						<button type="button" class="btn btn-default" tooltip="<?php echo __d('net_commons', 'Delete'); ?>"
