@@ -151,8 +151,7 @@ class Category extends CategoriesAppModel {
  * カテゴリーの取得
  *
  * @param int $categoryId カテゴリーID
- * @param int $roomId rooms.id
- * @return array Categories
+* @return array Categories
  */
 	public function getCategory($categoryId) {
 		$conditions = array(
