@@ -15,22 +15,25 @@ msgstr ""
 "Language: ja\n"
 "X-Generator: Poedit 1.8.1\n"
 
-#: Blogs/View/BlogEntriesEdit/form.ctp:181 Categories/Model/Category.php:102
-#: Categories/Test/Case/Model/CategoryValidateCategoryTest.php:121
-#: Categories/View/Elements/edit_form.ctp:22
-#: Faqs/View/Elements/FaqQuestions/edit_form.ctp:67
-#: Faqs/View/FaqQuestionOrders/edit.ctp:54
-#: Links/View/Elements/Links/edit_form.ctp:114 Links/View/Links/view.ctp:47
+#: Categories/Model/Category.php:95
+#: Categories/View/Elements/edit_form.ctp:41
+#: Categories/View/Helper/CategoryHelper.php:134;194
+#: Faqs/View/Elements/FaqQuestions/article.ctp:38
+#: Faqs/View/FaqQuestionOrders/edit.ctp:50
+#: Faqs/View/FaqQuestions/view.ctp:37
+#: Links/View/Links/view.ctp:62
+#: Videos/Controller/VideosController.php:147
+#: Videos/View/Elements/Videos/list.ctp:69
+#: Videos/View/Videos/index.ctp:47
+#: Videos/View/Videos/view.ctp:79
 msgid "Category"
 msgstr "カテゴリ"
 
-#: Blogs/View/BlogEntriesEdit/form.ctp:185
-#: Faqs/View/Elements/FaqQuestions/edit_form.ctp:71
-#: Faqs/View/Elements/FaqQuestions/select_category.ctp:21
-#: Links/View/Elements/Links/edit_form.ctp:118
+#: Categories/View/Elements/edit_form.ctp:58
+msgid "No category."
+msgstr "カテゴリなし"
+
+#: Categories/View/Helper/CategoryHelper.php:119;187
 msgid "Select Category"
 msgstr "カテゴリ選択"
 
-#: Categories/View/Elements/edit_form.ctp:33
-msgid "No category."
-msgstr "カテゴリなし"
