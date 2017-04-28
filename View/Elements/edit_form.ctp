@@ -22,6 +22,16 @@ $categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categor
 	</div>
 
 	<div class="panel-body">
+		<div class="form-group clearfix">
+			<div class="pull-left">
+				<?php echo $this->NetCommonsForm->error('category_name'); ?>
+			</div>
+
+			<div class="pull-right">
+				<?php echo $this->Button->add(null, ['ng-click' => 'add()', 'type' => 'button']); ?>
+			</div>
+		</div>
+
 		<?php echo $this->element('Categories.edit_form_categories'); ?>
 	</div>
 </div>

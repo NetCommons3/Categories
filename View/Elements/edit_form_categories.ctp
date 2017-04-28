@@ -13,18 +13,6 @@
  */
 ?>
 
-<div class="form-group clearfix">
-	<div class="pull-left">
-		<?php echo $this->NetCommonsForm->error('category_name'); ?>
-	</div>
-
-	<div class="pull-right">
-		<button type="button" class="btn btn-success btn-sm" ng-click="add()">
-			<span class="glyphicon glyphicon-plus"> </span>
-		</button>
-	</div>
-</div>
-
 <div ng-hide="categories.length">
 	<p><?php echo __d('categories', 'No category.'); ?></p>
 </div>
