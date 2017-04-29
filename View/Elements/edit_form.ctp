@@ -12,30 +12,9 @@
  * @copyright Copyright 2014, NetCommons Project
  */
 
-echo $this->NetCommonsHtml->script('/categories/js/categories.js');
-
-if (! isset($this->request->data['Categories'])) {
-	$this->request->data['Categories'] = array();
-}
-if (! isset($this->request->data['CategoryMap'])) {
-	$this->request->data['CategoryMap'] = array();
-}
+echo $this->element('Categories.edit_form_common');
+$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
 ?>
-
-<?php
-	foreach ($this->request->data['CategoryMap'] as $category) {
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.id');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.Category.key');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoriesLanguage.id');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoriesLanguage.language_id');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.id');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.key');
-		echo $this->NetCommonsForm->hidden('CategoryMap.' . $category['Category']['id'] . '.CategoryOrder.category_key');
-	}
-	$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
-?>
-
-<?php $this->NetCommonsForm->unlockField('Categories'); ?>
 
 <div class="panel panel-default" ng-controller="Categories" ng-init="initialize(<?php echo h(json_encode(['categories' => $categories])); ?>)">
 	<div class="panel-heading">
@@ -49,45 +28,11 @@ if (! isset($this->request->data['CategoryMap'])) {
 			</div>
 
 			<div class="pull-right">
-				<button type="button" class="btn btn-success btn-sm" ng-click="add()">
-					<span class="glyphicon glyphicon-plus"> </span>
-				</button>
+				<?php echo $this->Button->add(null, ['ng-click' => 'add()', 'type' => 'button']); ?>
 			</div>
 		</div>
 
-		<div ng-hide="categories.length">
-			<p><?php echo __d('categories', 'No category.'); ?></p>
-		</div>
-
-		<div class="pre-scrollable" ng-show="categories.length">
-			<article class="form-group" ng-repeat="c in categories track by $index">
-				<div class="input-group input-group-sm">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-default"
-								ng-click="move('up', $index)" ng-disabled="$first">
-							<span class="glyphicon glyphicon-arrow-up"></span>
-						</button>
-
-						<button type="button" class="btn btn-default"
-								ng-click="move('down', $index)" ng-disabled="$last">
-							<span class="glyphicon glyphicon-arrow-down"></span>
-						</button>
-					</div>
-
-					<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.category.id">
-					<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][weight]" ng-value="{{$index + 1}}">
-					<input type="text" name="data[Categories][{{$index}}][CategoriesLanguage][name]"
-							ng-model="c.categoriesLanguage.name" class="form-control" required autofocus>
-
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-default" tooltip="<?php echo __d('net_commons', 'Delete'); ?>"
-								ng-click="delete($index)">
-							<span class="glyphicon glyphicon-remove"> </span>
-						</button>
-					</div>
-				</div>
-			</article>
-		</div>
+		<?php echo $this->element('Categories.edit_form_categories'); ?>
 	</div>
 </div>
 
