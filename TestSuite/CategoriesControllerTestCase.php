@@ -20,7 +20,7 @@ App::uses('NetCommonsControllerTestCase', 'NetCommons.TestSuite');
  * @package NetCommons\Categories\TestSuite
  * @codeCoverageIgnore
  */
-class CategoriesControllerTestCase extends NetCommonsControllerTestCase {
+abstract class CategoriesControllerTestCase extends NetCommonsControllerTestCase {
 
 /**
  * Fixtures
