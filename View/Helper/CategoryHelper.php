@@ -90,14 +90,17 @@ class CategoryHelper extends AppHelper {
  *   - `divider`: True is divider.
  *   - `displayMenu`: True is display menu. False is <li> tag only.
  *   - `displayEmpty`: True is empty display. False is not display.
+ * @param string $element String of element template name
+ *   - `dropdown_toggle_category`: Dropdown menu template
+ *   - `tab_category`: tab menu template
  * @return string HTML tags
  */
-	public function dropDownToggle($options = array()) {
+	public function dropDownToggle($options = array(), $element = 'dropdown_toggle_category') {
 		//カレントCategoryId
 		if (isset($this->_View->params['named']['category_id'])) {
 			$currentCategoryId = $this->_View->params['named']['category_id'];
 		} else {
-			$currentCategoryId = '0';
+			$currentCategoryId = null;
 		}
 
 		//URLのセット
@@ -141,7 +144,7 @@ class CategoryHelper extends AppHelper {
 			}
 		}
 
-		return $this->_View->element('Categories.dropdown_toggle_category', array(
+		return $this->_View->element('Categories.' . $element, array(
 			'currentCategoryId' => $currentCategoryId,
 			'options' => $options
 		));
