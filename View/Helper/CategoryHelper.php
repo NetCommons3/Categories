@@ -96,6 +96,10 @@ class CategoryHelper extends AppHelper {
  * @return string HTML tags
  */
 	public function dropDownToggle($options = array(), $element = 'dropdown_toggle_category') {
+		list($plugin, $elementFileName) = pluginSplit($element);
+		if (empty($plugin)) {
+			$plugin = 'Categories';
+		}
 		//カレントCategoryId
 		if (isset($this->_View->params['named']['category_id'])) {
 			$currentCategoryId = $this->_View->params['named']['category_id'];
@@ -144,7 +148,7 @@ class CategoryHelper extends AppHelper {
 			}
 		}
 
-		return $this->_View->element('Categories.' . $element, array(
+		return $this->_View->element($plugin . '.' . $elementFileName, array(
 			'currentCategoryId' => $currentCategoryId,
 			'options' => $options
 		));
