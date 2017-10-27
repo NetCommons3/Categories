@@ -101,11 +101,7 @@ class CategoryHelper extends AppHelper {
 			$plugin = 'Categories';
 		}
 		//カレントCategoryId
-		if (isset($this->_View->params['named']['category_id'])) {
-			$currentCategoryId = $this->_View->params['named']['category_id'];
-		} else {
-			$currentCategoryId = null;
-		}
+		$currentCategoryId = Hash::get($this->_View->params['named'], 'category_id', null);
 
 		//URLのセット
 		if (! isset($options['url'])) {
