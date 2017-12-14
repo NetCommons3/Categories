@@ -129,12 +129,13 @@ class Category extends CategoriesAppModel {
 				'CategoryOrder' => array(
 					'className' => 'Categories.CategoryOrder',
 					'foreignKey' => false,
-					'conditions' => ['CategoryOrder.category_key=Category.key'],
+					'conditions' => 'CategoryOrder.category_key=Category.key',
 					'fields' => '',
 					'order' => array('CategoryOrder.weight' => 'ASC')
 				),
 			)
 		), false);
+		$this->CategoryOrder->useDbConfig = $this->useDbConfig;
 
 		$belongsTo = $this->bindModelCategoryLang();
 		$this->bindModel($belongsTo, true);
@@ -163,12 +164,13 @@ class Category extends CategoriesAppModel {
 				'CategoryOrder' => array(
 					'className' => 'Categories.CategoryOrder',
 					'foreignKey' => false,
-					'conditions' => ['CategoryOrder.category_key=Category.key'],
+					'conditions' => 'CategoryOrder.category_key=Category.key',
 					'fields' => '',
 					'order' => array('CategoryOrder.weight' => 'ASC')
 				),
 			)
 		), false);
+		$this->CategoryOrder->useDbConfig = $this->useDbConfig;
 
 		$belongsTo = $this->bindModelCategoryLang();
 		$this->bindModel($belongsTo, true);
