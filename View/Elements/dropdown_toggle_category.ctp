@@ -15,7 +15,11 @@
 		<button type="button" class="btn btn-default category-dropdown-toggle dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			<div class="clearfix">
 				<div class="pull-left nc-category-ellipsis">
-					<?php echo h($options['categories'][$currentCategoryId]['name']); ?>
+					<?php if (isset($currentCategoryId)) : ?>
+						<?php echo h($options['categories'][$currentCategoryId]['name']); ?>
+					<?php else : ?>
+						<?php echo h($options['categories']['0']['name']); ?>
+					<?php endif; ?>
 				</div>
 				<div class="pull-right">
 					<span class="caret"></span>
