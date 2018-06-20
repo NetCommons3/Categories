@@ -13,7 +13,8 @@
  */
 
 echo $this->element('Categories.edit_form_common');
-$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
+//$categories = NetCommonsAppController::camelizeKeyRecursive($this->data['Categories']);
+$categories = $this->data['Categories'];
 ?>
 
 <div class="panel panel-default" ng-controller="Categories" ng-init="initialize(<?php echo h(json_encode(['categories' => $categories])); ?>)">

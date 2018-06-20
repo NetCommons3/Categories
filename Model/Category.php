@@ -142,6 +142,19 @@ class Category extends CategoriesAppModel {
 
 		$categories = $this->find('all', array(
 			'recursive' => 0,
+			'fields' => [
+				'Category.id',
+				'Category.block_id',
+				'Category.key',
+				'CategoryOrder.id',
+				'CategoryOrder.category_key',
+				'CategoryOrder.block_key',
+				'CategoryOrder.weight',
+				'CategoriesLanguage.id',
+				'CategoriesLanguage.language_id',
+				'CategoriesLanguage.category_id',
+				'CategoriesLanguage.name',
+			],
 			'conditions' => $conditions,
 		));
 
@@ -190,18 +203,32 @@ class Category extends CategoriesAppModel {
  * @return array
  */
 	public function bindModelCategoryLang($joinKey = 'Category.id') {
+		$this->loadModels([
+			'Language' => 'M17n.Language',
+		]);
+
+		$langs = $this->Language->getLanguage();
+		if (count($langs) > 1) {
+			$conditions = [
+				'CategoriesLanguage.category_id = ' . $joinKey,
+				'OR' => array(
+					'CategoriesLanguage.is_translation' => false,
+					'CategoriesLanguage.language_id' => Current::read('Language.id', '0'),
+				),
+			];
+		} else {
+			$conditions = [
+				'CategoriesLanguage.category_id = ' . $joinKey,
+				'CategoriesLanguage.language_id' => Current::read('Language.id', '0'),
+			];
+		}
+
 		$belongsTo = array(
 			'belongsTo' => array(
 				'CategoriesLanguage' => array(
 					'className' => 'Categories.CategoriesLanguage',
 					'foreignKey' => false,
-					'conditions' => array(
-						'CategoriesLanguage.category_id = ' . $joinKey,
-						'OR' => array(
-							'CategoriesLanguage.is_translation' => false,
-							'CategoriesLanguage.language_id' => Current::read('Language.id', '0'),
-						),
-					),
+					'conditions' => $conditions,
 					'fields' => array('id', 'language_id', 'category_id', 'name', 'is_origin', 'is_translation'),
 					'order' => ''
 				),

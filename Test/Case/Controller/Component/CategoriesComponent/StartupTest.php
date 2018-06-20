@@ -87,22 +87,22 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'block_id' => '2',
 					'key' => 'category_1',
 				),
-				'Block' => array(
-					'id' => '2',
-					'room_id' => '2',
-					'plugin_key' => 'categories',
-					'key' => 'block_1',
-					'public_type' => '1',
-					'publish_start' => null,
-					'publish_end' => null,
-					'content_count' => '0',
-				),
-				'TrackableCreator' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
-				'TrackableUpdater' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
+				//'Block' => array(
+				//	'id' => '2',
+				//	'room_id' => '2',
+				//	'plugin_key' => 'categories',
+				//	'key' => 'block_1',
+				//	'public_type' => '1',
+				//	'publish_start' => null,
+				//	'publish_end' => null,
+				//	'content_count' => '0',
+				//),
+				//'TrackableCreator' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
+				//'TrackableUpdater' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
 				'CategoryOrder' => array(
 					'id' => '1',
 					'category_key' => 'category_1',
@@ -114,8 +114,8 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'language_id' => '2',
 					'category_id' => '1',
 					'name' => 'Category 1',
-					'is_origin' => true,
-					'is_translation' => false,
+					//'is_origin' => true,
+					//'is_translation' => false,
 				),
 			),
 			1 => array(
@@ -124,22 +124,22 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'block_id' => '2',
 					'key' => 'category_2',
 				),
-				'Block' => array(
-					'id' => '2',
-					'room_id' => '2',
-					'plugin_key' => 'categories',
-					'key' => 'block_1',
-					'public_type' => '1',
-					'publish_start' => null,
-					'publish_end' => null,
-					'content_count' => '0',
-				),
-				'TrackableCreator' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
-				'TrackableUpdater' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
+				//'Block' => array(
+				//	'id' => '2',
+				//	'room_id' => '2',
+				//	'plugin_key' => 'categories',
+				//	'key' => 'block_1',
+				//	'public_type' => '1',
+				//	'publish_start' => null,
+				//	'publish_end' => null,
+				//	'content_count' => '0',
+				//),
+				//'TrackableCreator' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
+				//'TrackableUpdater' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
 				'CategoryOrder' => array(
 					'id' => '2',
 					'category_key' => 'category_2',
@@ -151,8 +151,8 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'language_id' => '2',
 					'category_id' => '2',
 					'name' => 'Category 2',
-					'is_origin' => true,
-					'is_translation' => false,
+					//'is_origin' => true,
+					//'is_translation' => false,
 				),
 			),
 			2 => array(
@@ -161,22 +161,22 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'block_id' => '2',
 					'key' => 'category_3',
 				),
-				'Block' => array(
-					'id' => '2',
-					'room_id' => '2',
-					'plugin_key' => 'categories',
-					'key' => 'block_1',
-					'public_type' => '1',
-					'publish_start' => null,
-					'publish_end' => null,
-					'content_count' => '0',
-				),
-				'TrackableCreator' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
-				'TrackableUpdater' => array(
-					'id' => '1', 'handlename' => 'System Administrator',
-				),
+				//'Block' => array(
+				//	'id' => '2',
+				//	'room_id' => '2',
+				//	'plugin_key' => 'categories',
+				//	'key' => 'block_1',
+				//	'public_type' => '1',
+				//	'publish_start' => null,
+				//	'publish_end' => null,
+				//	'content_count' => '0',
+				//),
+				//'TrackableCreator' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
+				//'TrackableUpdater' => array(
+				//	'id' => '1', 'handlename' => 'System Administrator',
+				//),
 				'CategoryOrder' => array(
 					'id' => '3',
 					'category_key' => 'category_3',
@@ -188,17 +188,17 @@ class CategoriesComponentStartupTest extends CategoriesControllerTestCase {
 					'language_id' => '2',
 					'category_id' => '3',
 					'name' => 'Category 3',
-					'is_origin' => true,
-					'is_translation' => false,
+					//'is_origin' => true,
+					//'is_translation' => false,
 				),
 			),
 		);
 
 		$actual = $this->vars['categories'];
-		$actual = Hash::remove($actual, '{n}.{s}.created_user');
-		$actual = Hash::remove($actual, '{n}.{s}.created');
-		$actual = Hash::remove($actual, '{n}.{s}.modified_user');
-		$actual = Hash::remove($actual, '{n}.{s}.modified');
+		//$actual = Hash::remove($actual, '{n}.{s}.created_user');
+		//$actual = Hash::remove($actual, '{n}.{s}.created');
+		//$actual = Hash::remove($actual, '{n}.{s}.modified_user');
+		//$actual = Hash::remove($actual, '{n}.{s}.modified');
 
 		$this->assertEquals($actual, $expected);
 		$this->assertTrue(in_array('Categories.Category', $this->controller->helpers, true));
