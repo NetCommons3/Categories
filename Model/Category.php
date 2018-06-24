@@ -47,6 +47,7 @@ class Category extends CategoriesAppModel {
 		'Block' => array(
 			'className' => 'Blocks.Block',
 			'foreignKey' => 'block_id',
+			'type' => 'INNER',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -120,14 +121,16 @@ class Category extends CategoriesAppModel {
  */
 	public function getCategories($blockId, $roomId) {
 		$conditions = array(
-			'Block.id' => $blockId,
-			'Block.room_id' => $roomId,
+			'Category.block_id' => $blockId,
+			//'Block.room_id' => $roomId,
 		);
 
+		$this->unbindModel(['belongsTo' => ['Block', 'TrackableCreator', 'TrackableUpdater']], true);
 		$this->bindModel(array(
 			'belongsTo' => array(
 				'CategoryOrder' => array(
 					'className' => 'Categories.CategoryOrder',
+					'type' => 'INNER',
 					'foreignKey' => false,
 					'conditions' => 'CategoryOrder.category_key=Category.key',
 					'fields' => '',
@@ -179,7 +182,7 @@ class Category extends CategoriesAppModel {
 					'foreignKey' => false,
 					'conditions' => 'CategoryOrder.category_key=Category.key',
 					'fields' => '',
-					'order' => array('CategoryOrder.weight' => 'ASC')
+					//'order' => array('CategoryOrder.weight' => 'ASC')
 				),
 			)
 		), false);
