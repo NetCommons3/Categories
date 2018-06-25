@@ -38,7 +38,7 @@ NetCommonsApp.controller('Categories', ['$scope', function($scope) {
   $scope.add = function() {
     var category = {
       Category: {id: null, name: ''},
-      CategoryOrder: {id: null, categoryKey: null}
+      CategoryOrder: {id: null, category_key: null}
     };
     $scope.categories.push(category);
   };
