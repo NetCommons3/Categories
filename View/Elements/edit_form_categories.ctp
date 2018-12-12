@@ -32,10 +32,10 @@
 				</button>
 			</div>
 
-			<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.category.id">
+			<input type="hidden" name="data[Categories][{{$index}}][Category][id]" ng-value="c.Category.id">
 			<input type="hidden" name="data[Categories][{{$index}}][CategoryOrder][weight]" ng-value="{{$index + 1}}">
 			<input type="text" name="data[Categories][{{$index}}][CategoriesLanguage][name]"
-					ng-model="c.categoriesLanguage.name" class="form-control" required autofocus>
+					ng-model="c.CategoriesLanguage.name" class="form-control" required autofocus>
 
 			<div class="input-group-btn">
 				<button type="button" class="btn btn-default" tooltip="<?php echo __d('net_commons', 'Delete'); ?>"
