@@ -73,11 +73,15 @@ class CategoryEditComponent extends Component {
 							'weight' => $post['CategoryOrder']['weight'],
 						),
 					));
-				}
-				if (isset($controller->request->data['CategoryMap'][$post['Category']['id']])) {
-					$category = Hash::merge(
-						$post, $controller->request->data['CategoryMap'][$post['Category']['id']]
-					);
+				} else {
+					if (isset($controller->request->data['CategoryMap'][$post['Category']['id']])) {
+						$category = Hash::merge(
+							$post, $controller->request->data['CategoryMap'][$post['Category']['id']]
+						);
+					} else {
+						$controller->request->data['Categories'] = [];
+						return $controller->throwBadRequest();
+					}
 				}
 				$category['Category']['block_id'] = $controller->request->data['Block']['id'];
 				$category['CategoryOrder']['block_key'] = $controller->request->data['Block']['key'];
