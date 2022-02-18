@@ -16,7 +16,7 @@
 			<div class="clearfix">
 				<div class="pull-left nc-category-ellipsis">
 					<?php if (isset($currentCategoryId)) : ?>
-						<?php echo h($options['categories'][$currentCategoryId]['name']); ?>
+						<?php echo h($options['categories'][$currentCategoryId]['name'] ?? ''); ?>
 					<?php else : ?>
 						<?php echo h($options['categories']['0']['name']); ?>
 					<?php endif; ?>
